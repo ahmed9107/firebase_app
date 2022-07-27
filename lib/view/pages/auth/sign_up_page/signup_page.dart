@@ -25,7 +25,7 @@ class SignUpPage extends StatelessWidget {
                   SizedBox(
                     height: Dimensions.screenHeight *0.25,
                     child: Center(child: Image.asset(
-                      'assets/images/cart.png',
+                      'assets/images/a.png',
                       width: Dimensions.width100
                     )),
                   ),

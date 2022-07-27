@@ -24,7 +24,7 @@ class LoginController extends GetxController {
   }
 
   goToSignUp() {
-    Get.offNamed(AppRoute.signup);
+    Get.toNamed(AppRoute.signup);
   }
 
   @override

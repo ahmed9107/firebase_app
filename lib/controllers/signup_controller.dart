@@ -19,11 +19,6 @@ class SignUpController extends GetxController implements GetxService{
     super.onInit();
   }
 
-  /* goToLogin() {
-    Get.offNamed(AppRoute.login);
-  } */
-
-
   final bool _emailError = false;
   bool get emailError => _emailError;
   
@@ -40,7 +35,7 @@ class SignUpController extends GetxController implements GetxService{
   bool get isLoaded => _isLoaded;
 
   goToLogin() {
-    Get.offNamed(AppRoute.login);
+    Get.toNamed(AppRoute.login);
   }
 
   bool isHidePassword = true;
