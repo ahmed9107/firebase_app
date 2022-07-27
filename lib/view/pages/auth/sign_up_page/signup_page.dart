@@ -1,4 +1,5 @@
 import 'package:firebase_app/controllers/signup_controller.dart';
+import 'package:firebase_app/routes/app_routes.dart';
 import 'package:firebase_app/utils/helpers/dimensions.dart';
 import 'package:firebase_app/view/widgets/auth_widgets/custom_button.dart';
 import 'package:firebase_app/view/widgets/auth_widgets/signup_login_text.dart';
@@ -75,14 +76,14 @@ class SignUpPage extends StatelessWidget {
                   CustomButtonAuth(
                     text: 'Sign Up',
                     onPressed: (){
-                      /* controller.signup().then((status){
+                      controller.signup().then((status){
                         if(status.isSuccess){
-                          Get.offNamed(AppRoute.getInitial());
+                          Get.offNamed(AppRoute.initial);
                         }else{
                           Get.snackbar('Faild', status.message,
-                              backgroundColor: Colors.red, colorText: Colors.white);
+                            backgroundColor: Colors.red, colorText: Colors.white);
                         }
-                      }); */
+                      });
                     }
                   ),
                   SizedBox(height: Dimensions.height20),

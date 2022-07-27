@@ -19,20 +19,81 @@ class SignUpController extends GetxController implements GetxService{
     super.onInit();
   }
 
-  final bool _emailError = false;
+  bool _emailError = false;
   bool get emailError => _emailError;
   
-  final bool _nameError = false;
+  bool _nameError = false;
   bool get nameError => _nameError;
   
-  final bool _phoneError = false;
+  bool _phoneError = false;
   bool get phoneError => _phoneError;
   
-  final bool _passError = false;
+  bool _passError = false;
   bool get passError => _passError;
 
-  final bool _isLoaded = false;
+  bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
+
+  signup() async {
+    if (!GetUtils.isEmail(email.text.trim()) || email.text.trim().isEmpty) {
+      _emailError = true;
+      update();
+      return;
+      //return ResponseModel(false, 'Not valid email!');
+    }
+    if (!GetUtils.isUsername(user.text.trim()) ||
+        user.text.trim().isEmpty ||
+        user.text.trim().length < 3 ||
+        user.text.trim().length > 20) {
+      _emailError = false;
+      _nameError = true;
+      update();
+      return;
+      //return ResponseModel(false, 'Not valid Name!');
+    }
+    if (!GetUtils.isPhoneNumber(phone.text.trim()) ||
+        phone.text.trim().isEmpty ||
+        phone.text.trim().length < 6 ||
+        phone.text.trim().length > 20) {
+      _emailError = false;
+      _nameError = false;
+      _phoneError = true;
+      update();
+      return;
+      //return ResponseModel(false, 'Not valid phone number!');
+    }
+    if (password.text.trim().isEmpty ||
+          password.text.trim().length < 8 ||
+          password.text.trim().length > 30) {
+      _emailError = false;
+      _nameError = false;
+      _phoneError = false;
+      _passError = true;
+      update();
+      return;
+      //return ResponseModel(false, 'Not valid Password!');
+    }
+
+    /* SignUpModel signupModel = SignUpModel(
+        email: email.text.trim(),
+        name: user.text.trim(),
+        phone: phone.text.trim(),
+        password: password.text.trim(),
+      );
+      _isLoaded = true;
+      update();
+      Response response = await authRepo.registration(signupModel);
+      late ResponseModel responseModel;
+      if(response.statusCode == 200){
+        authRepo.saveUserToken(response.body["token"]);
+        responseModel= ResponseModel(true, response.body["token"]);
+      }else{
+        responseModel= ResponseModel(false, response.statusText!);
+      } */
+      _isLoaded = false;
+      update();
+      //return responseModel;
+  }
 
   goToLogin() {
     Get.toNamed(AppRoute.login);

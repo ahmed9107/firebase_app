@@ -1,5 +1,6 @@
 import 'package:firebase_app/view/pages/auth/login_page/login_page.dart';
 import 'package:firebase_app/view/pages/auth/sign_up_page/signup_page.dart';
+import 'package:firebase_app/view/pages/home_page.dart';
 import 'package:get/get.dart';
 
 class AppRoute {
@@ -10,6 +11,7 @@ class AppRoute {
   static const String signup = "/signup";
 
   static List<GetPage> routes = [
+    GetPage(name: initial, page: () => const HomePage()),
     GetPage(name: login, page: () => const LoginPage()),
     GetPage(name: signup, page: () => const SignUpPage()),
     
