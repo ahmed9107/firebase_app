@@ -1,5 +1,4 @@
-import 'package:firebase_app/controllers/signup_controller.dart';
-import 'package:firebase_app/routes/app_routes.dart';
+import 'package:firebase_app/controllers/auth_controller.dart';
 import 'package:firebase_app/utils/helpers/dimensions.dart';
 import 'package:firebase_app/view/widgets/auth_widgets/custom_button.dart';
 import 'package:firebase_app/view/widgets/auth_widgets/signup_login_text.dart';
@@ -15,7 +14,7 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GetBuilder<SignUpController>(
+      body: GetBuilder<AuthController>(
         builder: (controller) {
           return !controller.isLoaded ? SingleChildScrollView(
             child: Form(
@@ -34,7 +33,7 @@ class SignUpPage extends StatelessWidget {
                     type: TextInputType.emailAddress,
                     title: 'Email',
                     hint: 'Enter your Email',
-                    controller:controller.email,
+                    controller:controller.emailController,
                     bgColor: controller.emailError
                         ? Colors.red.withOpacity(0.5)
                         : const Color(0xFFCECECE),
@@ -44,7 +43,7 @@ class SignUpPage extends StatelessWidget {
                     type: TextInputType.text,
                     title: 'Name',
                     hint: 'Enter your Name',
-                    controller:controller.user,
+                    controller:controller.userController,
                     bgColor: controller.nameError
                         ? Colors.red.withOpacity(0.5)
                         : const Color(0xFFCECECE),
@@ -54,7 +53,7 @@ class SignUpPage extends StatelessWidget {
                     type: TextInputType.number,
                     title: 'Phone',
                     hint: 'Enter your Phone Number',
-                    controller:controller.phone,
+                    controller:controller.phoneController,
                     bgColor: controller.phoneError
                         ? Colors.red.withOpacity(0.5)
                         : const Color(0xFFCECECE),
@@ -65,7 +64,7 @@ class SignUpPage extends StatelessWidget {
                     title: 'Password',
                     hint: 'Enter your password',
                     obscure: controller.isHidePassword,
-                    controller:controller.password,
+                    controller:controller.passwordController,
                     bgColor: controller.passError
                         ? Colors.red.withOpacity(0.5)
                         : const Color(0xFFCECECE),
@@ -76,14 +75,21 @@ class SignUpPage extends StatelessWidget {
                   CustomButtonAuth(
                     text: 'Sign Up',
                     onPressed: (){
-                      controller.signup().then((status){
+                      controller.signup(
+                        controller.emailController.text.trim(),
+                        controller.userController.text.trim(),
+                        controller.passwordController.text.trim(),
+                        controller.phoneController.text.trim(),
+                      );
+                      
+                      /* .then((status){
                         if(status.isSuccess){
                           Get.offNamed(AppRoute.initial);
                         }else{
                           Get.snackbar('Faild', status.message,
                             backgroundColor: Colors.red, colorText: Colors.white);
                         }
-                      });
+                      }); */
                     }
                   ),
                   SizedBox(height: Dimensions.height20),

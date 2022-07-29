@@ -1,5 +1,4 @@
-import 'package:firebase_app/controllers/login_controller.dart';
-import 'package:firebase_app/controllers/signup_controller.dart';
+/* import 'package:firebase_app/controllers/signup_controller.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -11,5 +10,5 @@ Future<void> init() async {
 
   // Controllers
   Get.lazyPut(() => SignUpController());
-  Get.lazyPut(() => LoginController());
 }
+ */

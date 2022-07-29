@@ -1,4 +1,4 @@
-import 'package:firebase_app/controllers/login_controller.dart';
+import 'package:firebase_app/controllers/auth_controller.dart';
 import 'package:firebase_app/utils/helpers/dimensions.dart';
 import 'package:firebase_app/view/widgets/auth_widgets/custom_button.dart';
 import 'package:firebase_app/view/widgets/auth_widgets/signup_login_text.dart';
@@ -16,7 +16,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GetBuilder<LoginController>(
+      body: GetBuilder<AuthController>(
         builder: (controller) {
           return !controller.isLoaded ? SingleChildScrollView(
             child: Form(
@@ -71,7 +71,9 @@ class LoginPage extends StatelessWidget {
                   CustomButtonAuth(
                     text: 'Login', 
                     onPressed: () {
-                      /* controller.login().then((status) {
+                      controller.login(controller.emailController.text.trim(), controller.passwordController.text.trim());
+                      
+                      /*.then((status) {
                         if(status.isSuccess){
                           Get.offNamed(AppRoute.getInitial());
                         } else {
