@@ -25,7 +25,7 @@ class LoginPage extends StatelessWidget {
                 children: [
                   SizedBox(height: Dimensions.screenHeight *0.05,),
                   SizedBox(
-                    height: Dimensions.screenHeight *0.25,
+                    height: Dimensions.screenHeight *0.20,
                     child: Center(child: Image.asset(
                       'assets/images/a.png',
                       width: Dimensions.width100
@@ -47,7 +47,6 @@ class LoginPage extends StatelessWidget {
                   SizedBox(height: Dimensions.height25),
                   CustomInputField(
                     type: TextInputType.emailAddress,
-                    title: 'Email',
                     hint: 'Enter your Email',
                     controller:controller.emailController,
                     bgColor: controller.emailError
@@ -57,7 +56,6 @@ class LoginPage extends StatelessWidget {
                   ),
                   CustomInputField(
                     type: TextInputType.text,
-                    title: 'Password',
                     hint: 'Enter your password',
                     obscure: controller.isHidePassword,
                     controller:controller.passwordController,
@@ -71,16 +69,8 @@ class LoginPage extends StatelessWidget {
                   CustomButtonAuth(
                     text: 'Login', 
                     onPressed: () {
-                      controller.login(controller.emailController.text.trim(), controller.passwordController.text.trim());
-                      
-                      /*.then((status) {
-                        if(status.isSuccess){
-                          Get.offNamed(AppRoute.getInitial());
-                        } else {
-                          Get.snackbar('Faild', status.message,
-                              backgroundColor: Colors.red, colorText: Colors.white);
-                        }
-                      }); */
+                      controller.login(controller.emailController.text.trim(),
+                      controller.passwordController.text.trim());
                     }
                   ),
                   SizedBox(height: Dimensions.height20),

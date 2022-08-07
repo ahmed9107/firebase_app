@@ -80,16 +80,6 @@ class AuthController extends GetxController{
     }
   }
 
-  /* void register(String email, String name, String password, String phone){
-    try {
-      auth.createUserWithEmailAndPassword(
-        email: email, password: password
-      );
-    } catch (e) {
-      rethrow;
-    }
-  } */
-
   void login(String email, String password) {
     if (!GetUtils.isEmail(emailController.text.trim()) || emailController.text.trim().isEmpty) {
       _emailError = true;
@@ -131,8 +121,8 @@ class AuthController extends GetxController{
       return;
     }
     if (passwordController.text.trim().isEmpty ||
-          passwordController.text.trim().length < 8 ||
-          passwordController.text.trim().length > 30) {
+        passwordController.text.trim().length < 8 ||
+        passwordController.text.trim().length > 30) {
       _emailError = false;
       _nameError = false;
       _phoneError = false;

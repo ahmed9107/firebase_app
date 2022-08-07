@@ -21,7 +21,6 @@ class HomePage extends StatelessWidget {
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: Dimensions.height10),
         child: Column(
-          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
               margin: EdgeInsets.symmetric(vertical: Dimensions.height45),

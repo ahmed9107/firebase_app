@@ -31,7 +31,6 @@ class SignUpPage extends StatelessWidget {
                   ),
                   CustomInputField(
                     type: TextInputType.emailAddress,
-                    title: 'Email',
                     hint: 'Enter your Email',
                     controller:controller.emailController,
                     bgColor: controller.emailError
@@ -41,7 +40,6 @@ class SignUpPage extends StatelessWidget {
                   ),
                   CustomInputField(
                     type: TextInputType.text,
-                    title: 'Name',
                     hint: 'Enter your Name',
                     controller:controller.userController,
                     bgColor: controller.nameError
@@ -51,7 +49,6 @@ class SignUpPage extends StatelessWidget {
                   ),
                   CustomInputField(
                     type: TextInputType.number,
-                    title: 'Phone',
                     hint: 'Enter your Phone Number',
                     controller:controller.phoneController,
                     bgColor: controller.phoneError
@@ -61,7 +58,6 @@ class SignUpPage extends StatelessWidget {
                   ),
                   CustomInputField(
                     type: TextInputType.text,
-                    title: 'Password',
                     hint: 'Enter your password',
                     obscure: controller.isHidePassword,
                     controller:controller.passwordController,
@@ -81,15 +77,6 @@ class SignUpPage extends StatelessWidget {
                         controller.passwordController.text.trim(),
                         controller.phoneController.text.trim(),
                       );
-                      
-                      /* .then((status){
-                        if(status.isSuccess){
-                          Get.offNamed(AppRoute.initial);
-                        }else{
-                          Get.snackbar('Faild', status.message,
-                            backgroundColor: Colors.red, colorText: Colors.white);
-                        }
-                      }); */
                     }
                   ),
                   SizedBox(height: Dimensions.height20),
