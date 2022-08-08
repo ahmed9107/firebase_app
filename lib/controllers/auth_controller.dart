@@ -1,6 +1,6 @@
+import 'dart:async';
+
 import 'package:firebase_app/routes/app_routes.dart';
-import 'package:firebase_app/view/pages/auth/login_page/login_page.dart';
-import 'package:firebase_app/view/pages/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -74,9 +74,11 @@ class AuthController extends GetxController{
 
   _initialPage(User? user){
     if(user == null){
-      Get.offAll(()=> const LoginPage());
+      Timer(const Duration(seconds: 3), () => Get.offNamed(AppRoute.login));
+      //Get.offNamed(AppRoute.login);
     }else{
-      Get.offAll(()=> const HomePage());
+      Timer(const Duration(seconds: 3), () => Get.offNamed(AppRoute.home));
+      //Get.offNamed(AppRoute.home);
     }
   }
 

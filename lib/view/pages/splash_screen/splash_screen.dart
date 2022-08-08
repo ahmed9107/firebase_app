@@ -1,8 +1,5 @@
-import 'dart:async';
-import 'package:firebase_app/routes/app_routes.dart';
 import 'package:firebase_app/utils/helpers/dimensions.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -23,8 +20,13 @@ class _SplashScreenState extends State<SplashScreen>
     animController = AnimationController(vsync: this, duration: const Duration(seconds: 2))
         ..forward();
     animation = CurvedAnimation(parent: animController, curve: Curves.linear);
-    Timer(const Duration(seconds: 3), () => Get.offNamed(AppRoute.login));
   }
+
+ /*  @override
+  void dispose() {
+    animController.dispose();
+    super.dispose();
+  } */
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +36,12 @@ class _SplashScreenState extends State<SplashScreen>
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           ScaleTransition(
-              scale: animation,
-              child: Center(
-                child: Image.asset('assets/images/a.png',
-                  color: Theme.of(context).primaryColorLight,
-                  width: Dimensions.height210),
-              )),
+            scale: animation,
+            child: Center(
+              child: Image.asset('assets/images/a.png',
+                color: Theme.of(context).primaryColorLight,
+                width: Dimensions.height210),
+            )),
         ],
       ),
     );
